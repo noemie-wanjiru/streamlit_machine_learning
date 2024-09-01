@@ -4,27 +4,18 @@ import pandas as pd
 from dotenv import load_dotenv
 import os
 
-# Load environment variables from the .env file
-load_dotenv(r"C:\Users\user\OneDrive\streamlit_machine_learning\.env")
+
 
 # Function to connect to SQL Server
 def get_data():
     
 
-    # Retrieve the database credentials from environment variables
-    driver = os.getenv('DB_DRIVER')
-    server = os.getenv('DB_SERVER')
-    database = os.getenv('DB_DATABASE')
-    uid = os.getenv('DB_USER')
-    pwd = os.getenv('DB_PASSWORD')
 
-     # Establish the connection
-    conn = pyodbc.connect(f'DRIVER={driver};'
-                              f'SERVER={server};'
-                              f'DATABASE={database};'
-                              f'UID={uid};'
-                              f'PWD={pwd}')
-    
+    conn = pyodbc.connect(r'DRIVER={SQL Server};'
+                          r'SERVER=dap-projects-database.database.windows.net;'
+                          r'DATABASE=dapDB;'
+                          r'UID=LP2_project;'
+                          r'PWD=Stat$AndD@t@Rul3')
     query = "SELECT TOP 100 * FROM dbo.LP2_Telco_churn_first_3000"  
     data = pd.read_sql(query, conn)
     conn.close()
