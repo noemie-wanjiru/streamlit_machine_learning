@@ -9,25 +9,16 @@ from PIL import Image
 from dotenv import load_dotenv
 import os
 
-# Load environment variables from the .env file
-load_dotenv(r"C:\Users\user\OneDrive\streamlit_machine_learning\.env")
 
 # Function to connect to SQL Server and retrieve data
 def get_data():
 
-    # Retrieve the database credentials from environment variables
-    driver = os.getenv('DB_DRIVER')
-    server = os.getenv('DB_SERVER')
-    database = os.getenv('DB_DATABASE')
-    uid = os.getenv('DB_USER')
-    pwd = os.getenv('DB_PASSWORD')
+    conn = pyodbc.connect(r'DRIVER={SQL Server};'
+                          r'SERVER=dap-projects-database.database.windows.net;'
+                          r'DATABASE=dapDB;'
+                          r'UID=LP2_project;'
+                          r'PWD=Stat$AndD@t@Rul3')
 
-     # Establish the connection
-    conn = pyodbc.connect(f'DRIVER={driver};'
-                              f'SERVER={server};'
-                              f'DATABASE={database};'
-                              f'UID={uid};'
-                              f'PWD={pwd}')
     
     query = "SELECT * FROM dbo.LP2_Telco_churn_first_3000"  # Adjust the query to fit your data
     data = pd.read_sql(query, conn)
@@ -36,7 +27,7 @@ def get_data():
 
 def app():
         # Load your image 
-    image =Image.open("images\kpi.jpeg")
+    image =Image.open(r"images\kpi.jpeg")
 
     st.image(image, use_column_width=True)
     
