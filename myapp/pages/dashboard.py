@@ -27,7 +27,7 @@ def get_data():
 
 def app():
         # Load your image 
-    image =Image.open("images/kpi.jpeg")
+    image =Image.open("images\kpi.jpeg")
 
     st.image(image, use_column_width=True)
     
