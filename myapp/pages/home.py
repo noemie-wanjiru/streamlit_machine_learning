@@ -7,7 +7,7 @@ from datetime import datetime
 def app():
 
     # Load your image 
-    image = Image.open("images\churn.png")
+    image = Image.open("images/churn.png")
 
      # Display the image at full width
     st.image(image, use_column_width=True)
