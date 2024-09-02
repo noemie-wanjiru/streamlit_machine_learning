@@ -8,10 +8,10 @@ from datetime import datetime
 @st.cache_resource
 
 def load_preprocessing_pipeline():
-    return joblib.load(r"models\preprocessing_pipeline.joblib")
+    return joblib.load("models/preprocessing_pipeline.joblib")
 
 def load_model():
-    model = joblib.load(r"models\machine_learning_model.joblib")  
+    model = joblib.load("models/machine_learning_model.joblib")  
     return model
 
 
